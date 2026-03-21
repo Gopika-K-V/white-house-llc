@@ -9,7 +9,7 @@
         --gray-100: #e3e5e5;
         --gray-300: #c2c8cb;
         --gray-500: #60676b;
-        --gray-700: #343b40;    
+        --gray-700: #343b40;
         --gray-900: #0f1113;
         --accent: #ffb526;
         --font-display: 'Barlow Condensed', sans-serif;
@@ -39,7 +39,7 @@
         font-family: var(--font-body);
         color: var(--gray-900);
         background: #f2f3f3;
-        overflow-x: hidden;
+        overflow-x: clip;
     }
 
     a {
@@ -140,7 +140,7 @@
         left: 0;
         right: 0;
         z-index: 100;
-        background: rgba(255, 255, 255, .95);
+        background: #FFF;
         backdrop-filter: blur(12px);
         border-bottom: 1px solid var(--gray-100);
         transition: box-shadow var(--transition);
@@ -829,7 +829,8 @@
         color: var(--gray-900);
         text-decoration: none;
         transition: var(--transition);
-        &:hover{
+
+        &:hover {
             color: var(--blue);
         }
     }
@@ -1062,7 +1063,8 @@
         .hero-ctas {
             flex-direction: column;
         }
-        .contact-item{
+
+        .contact-item {
             flex: 0 0 100%;
             max-width: 100%;
         }
