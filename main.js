@@ -42,32 +42,32 @@ window.addEventListener('scroll', () => {
 });
 
 // CONTACT FORM
-document.getElementById('contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const msg = document.getElementById('form-msg');
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    if (!name || !email || !message) {
-        msg.style.display = 'block';
-        msg.style.background = '#FFF3E0';
-        msg.style.color = '#E65100';
-        msg.textContent = 'Please fill in all required fields.';
-        return;
-    }
-    const btn = this.querySelector('button[type=submit]');
-    btn.textContent = 'Sending...';
-    btn.disabled = true;
-    setTimeout(() => {
-        msg.style.display = 'block';
-        msg.style.background = '#E8F5E9';
-        msg.style.color = '#2E7D32';
-        msg.textContent = '✓ Message sent successfully! We\'ll be in touch within 24 hours.';
-        this.reset();
-        btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
-        btn.disabled = false;
-    }, 1500);
-});
+// document.getElementById('contact-form').addEventListener('submit', function (e) {
+//     e.preventDefault();
+//     const msg = document.getElementById('form-msg');
+//     const name = document.getElementById('name').value.trim();
+//     const email = document.getElementById('email').value.trim();
+//     const message = document.getElementById('message').value.trim();
+//     if (!name || !email || !message) {
+//         msg.style.display = 'block';
+//         msg.style.background = '#FFF3E0';
+//         msg.style.color = '#E65100';
+//         msg.textContent = 'Please fill in all required fields.';
+//         return;
+//     }
+//     const btn = this.querySelector('button[type=submit]');
+//     btn.textContent = 'Sending...';
+//     btn.disabled = true;
+//     setTimeout(() => {
+//         msg.style.display = 'block';
+//         msg.style.background = '#E8F5E9';
+//         msg.style.color = '#2E7D32';
+//         msg.textContent = '✓ Message sent successfully! We\'ll be in touch within 24 hours.';
+//         this.reset();
+//         btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg> Send Message';
+//         btn.disabled = false;
+//     }, 1500);
+// });
 
 // HERO COUNTER ANIMATION
 function animateCount(el, target, suffix = '') {
@@ -96,3 +96,52 @@ const statsObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) statsObserver.observe(heroStats);
+// CATEGORY TABS
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+if (tabBtns.length > 0) {
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('data-tab');
+
+            // Remove active classes and forcefully hide contents
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(c => {
+                c.classList.remove('active');
+                c.style.display = 'none';
+            });
+
+            // Apply active class and forcefully show target
+            this.classList.add('active');
+            const activeTab = document.getElementById('tab-' + targetId);
+            if (activeTab) {
+                activeTab.classList.add('active');
+                activeTab.style.display = 'grid';
+
+                // Force visibility instantly to bypass the scroll-observer opacity 0 issue
+                setTimeout(() => {
+                    activeTab.querySelectorAll('.fade-up').forEach(el => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                        el.classList.add('visible');
+                    });
+                }, 10);
+            }
+        });
+    });
+
+    // On page load, immediately force the first active tab contents to appear
+    window.addEventListener('DOMContentLoaded', () => {
+        const firstActive = document.querySelector('.tab-content.active');
+        if (firstActive) {
+            firstActive.style.display = 'grid';
+            firstActive.querySelectorAll('.fade-up').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                el.classList.add('visible');
+            });
+        }
+    });
+}
