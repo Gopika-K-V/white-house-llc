@@ -37,7 +37,7 @@ window.addEventListener('scroll', () => {
         if (window.scrollY >= s.offsetTop - 100) current = s.id;
     });
     navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === `#${current}` || (current === '' && a.getAttribute('href') === '#'));
+        a.classList.toggle('active', a.getAttribute('href') === `#${current}` || (current === '' && a.getAttribute('href') === 'index.html'));
     });
 });
 
