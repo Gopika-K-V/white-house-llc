@@ -680,6 +680,53 @@
         margin-bottom: 16px;
     }
 
+    .product-desc {
+        font-size: 14px;
+        color: var(--gray-500);
+        line-height: 1.6;
+        transition: var(--transition);
+        position: relative;
+        z-index: 1;
+        margin-top: 8px;
+        margin-bottom: 16px;
+    }
+
+    .material-card:hover .product-desc {
+        color: rgba(255, 255, 255, .8);
+    }
+
+    @media (min-width: 992px) {
+        .product-desc {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            margin-top: 0;
+            margin-bottom: 0;
+            transition: all 0.3s cubic-bezier(.4, 0, .2, 1);
+        }
+        .material-card:hover .product-desc {
+            opacity: 1;
+            max-height: 100px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+    }
+
+    .material-card .btn {
+        position: relative;
+        z-index: 1;
+    }
+
+    .material-card:hover .btn-outline {
+        border-color: rgba(255, 255, 255, 0.8);
+        color: white;
+    }
+
+    .material-card:hover .btn-outline:hover {
+        background: white;
+        color: var(--blue);
+    }
+
     .material-tag {
         display: inline-block;
         font-size: 11px;
