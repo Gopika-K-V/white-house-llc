@@ -1,4 +1,20 @@
 
+// CONTACT DETAILS SHARED BY ALL INNER PAGES
+document.querySelectorAll('.page-contact').forEach(section => {
+    section.innerHTML = `
+        <div class="container"><div class="contact-info">
+            <p class="section-subtitle">We'd love to hear from you. Reach out via any of the channels below and we'll respond promptly.</p>
+            <div class="contact-items">
+                <div class="contact-item"><div class="contact-item-icon">☎</div><div><div class="contact-item-label">Call Us</div><a href="tel:0558297448" class="contact-item-value">+971 055 829 7448</a></div></div>
+                <div class="contact-item"><div class="contact-item-icon">●</div><div><div class="contact-item-label">WhatsApp</div><a href="https://wa.me/0558297448" target="_blank" class="contact-item-value">+971 055 829 7448</a></div></div>
+                <div class="contact-item"><div class="contact-item-icon">✉</div><div><div class="contact-item-label">Email</div><a href="mailto:info@whitehomesmaterials.com" class="contact-item-value">info@whitehomesmaterials.com</a></div></div>
+                <div class="contact-item"><div class="contact-item-icon">☎</div><div><div class="contact-item-label">Sales Phone</div><a href="tel:+9710541583450" class="contact-item-value">+971 0541583450</a></div></div>
+                <div class="contact-item"><div class="contact-item-icon">✉</div><div><div class="contact-item-label">Sales Email</div><a href="mailto:sales@whitehomematerials.com" class="contact-item-value">sales@whitehomematerials.com</a></div></div>
+                <div class="contact-item"><div class="contact-item-icon">⌖</div><div><div class="contact-item-label">Location</div><div class="contact-item-value">Dubai, UAE</div></div></div>
+            </div>
+        </div></div>`;
+});
+
 // NAV SCROLL
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -18,6 +34,7 @@ mobileMenu.querySelectorAll('a').forEach(a => {
         mobileMenu.classList.remove('open');
     });
 });
+
 
 // INTERSECTION OBSERVER - FADE UP
 const fadeEls = document.querySelectorAll('.fade-up');
